@@ -36,10 +36,13 @@ describe('Post preview page', () => {
     const useRouterMocked = jest.mocked(useRouter)
     const pushMock = jest.fn()
 
-    useSessionMocked.mockReturnValueOnce([
-      { activeSubscription: 'fake-active-subscription' },
-      false
-    ] as any)
+    useSessionMocked.mockReturnValueOnce({
+      data: {
+        activeSubscription: 'fake-active-subscription',
+        expires: null
+
+      }
+    } as any)
 
     useRouterMocked.mockReturnValueOnce({
       push: pushMock,
